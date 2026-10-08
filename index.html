@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Personal Expense Calculator</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <main class="app">
+    <header class="app-header">
+      <h1>Personal Expense Calculator</h1>
+      <p>Enter your monthly income and spending. Results update as you type.</p>
+    </header>
+
+    <div class="layout">
+      <section class="panel" aria-labelledby="inputs-title">
+        <div class="panel-head">
+          <h2 id="inputs-title">Your month</h2>
+          <label class="currency">
+            Currency
+            <select id="currency">
+              <option value="INR" selected>₹ INR</option>
+              <option value="USD">$ USD</option>
+              <option value="EUR">€ EUR</option>
+              <option value="GBP">£ GBP</option>
+            </select>
+          </label>
+        </div>
+
+        <form id="calc-form" novalidate autocomplete="off">
+          <div class="field income-field">
+            <label for="income">Monthly income</label>
+            <input id="income" name="income" type="text" inputmode="decimal" placeholder="0" aria-describedby="income-error">
+            <p class="error" id="income-error" role="alert"></p>
+          </div>
+
+          <h3 class="group-title">Monthly expenses</h3>
+          <div class="grid">
+            <div class="field">
+              <label for="rent">Rent</label>
+              <input id="rent" name="rent" type="text" inputmode="decimal" placeholder="0" aria-describedby="rent-error">
+              <p class="error" id="rent-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="food">Food</label>
+              <input id="food" name="food" type="text" inputmode="decimal" placeholder="0" aria-describedby="food-error">
+              <p class="error" id="food-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="transport">Transportation</label>
+              <input id="transport" name="transport" type="text" inputmode="decimal" placeholder="0" aria-describedby="transport-error">
+              <p class="error" id="transport-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="utilities">Utilities</label>
+              <input id="utilities" name="utilities" type="text" inputmode="decimal" placeholder="0" aria-describedby="utilities-error">
+              <p class="error" id="utilities-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="shopping">Shopping</label>
+              <input id="shopping" name="shopping" type="text" inputmode="decimal" placeholder="0" aria-describedby="shopping-error">
+              <p class="error" id="shopping-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="entertainment">Entertainment</label>
+              <input id="entertainment" name="entertainment" type="text" inputmode="decimal" placeholder="0" aria-describedby="entertainment-error">
+              <p class="error" id="entertainment-error" role="alert"></p>
+            </div>
+            <div class="field">
+              <label for="other">Other</label>
+              <input id="other" name="other" type="text" inputmode="decimal" placeholder="0" aria-describedby="other-error">
+              <p class="error" id="other-error" role="alert"></p>
+            </div>
+          </div>
+
+          <button type="button" id="reset" class="btn-reset">Clear all values</button>
+        </form>
+      </section>
+
+      <section class="panel results" aria-labelledby="results-title" aria-live="polite">
+        <h2 id="results-title">Summary</h2>
+
+        <div class="hero" id="hero">
+          <span class="hero-label">Savings rate</span>
+          <span class="hero-value" id="savings-pct">0%</span>
+          <span class="hero-note" id="status-note">Enter your income to get started.</span>
+        </div>
+
+        <div class="bar" id="bar" role="img" aria-label="Breakdown of income by expense category"></div>
+        <ul class="legend" id="legend"></ul>
+
+        <dl class="totals">
+          <div>
+            <dt>Income</dt>
+            <dd id="out-income">0</dd>
+          </div>
+          <div>
+            <dt>Total expenses</dt>
+            <dd id="out-expenses">0</dd>
+          </div>
+          <div class="balance">
+            <dt>Remaining balance</dt>
+            <dd id="out-balance">0</dd>
+          </div>
+        </dl>
+      </section>
+    </div>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
